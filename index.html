@@ -11,29 +11,71 @@
 <body>
     <section class="conteudo">
         <div class="conteudo-titulo">
-            <img src="unlock.svg" alt="cadeado fechado">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="11" width="18" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M7 11V8a5 5 0 0 1 10 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
             <h2 class="titulo-principal">Gerador de senhas</h2>
             <h3 class="titulo-secundario">Gere instantaneamente uma senha aleatória e segura</h3>
         </div>
-        <div class="conteudo-senha">
-            <label for="senha">Senha</label>
-            <input name="senha" type="text" id="campo-senha">
+
+        <div class="tema-switcher">
+            <label for="tema-select">Tema:</label>
+            <select id="tema-select" aria-label="Selecionar tema">
+                <option value="dark">Escuro (padrão)</option>
+                <option value="light">Claro</option>
+                <option value="azure">Azul</option>
+                <option value="purple">Roxo</option>
+                <option value="green">Verde</option>
+                <option value="sunset">Pôr do sol</option>
+                <option value="mono">Monocromático</option>
+                <option value="orange">Laranja</option>
+                <option value="teal">Verde-azulado</option>
+                <option value="pastel">Pastel</option>
+                <option value="midnight">Meia-noite</option>
+                <option value="sunrise">Sunrise</option>
+                <option value="coral">Coral</option>
+                <option value="lavender">Lavanda</option>
+                <option value="ocean">Oceano</option>
+                <option value="black">Preto</option>
+            </select>
         </div>
+
+        <div class="conteudo-senha">
+            <label for="campo-senha">Senha</label>
+            <div class="senha-row">
+                <input name="senha" type="text" id="campo-senha" readonly aria-label="senha gerada">
+                <button id="copiar-btn" class="btn">Copiar</button>
+            </div>
+        </div>
+
         <div class="parametro">
             <h3 class="parametro-titulo">Personalize sua senha</h3>
             <div class="parametro-coluna__senha">
                 <div class="parametro-senha">
                     <h4 class="parametro-senha__titulo">Número de caracteres</h4>
-                </div>                
+                    <input type="range" id="tamanho" min="4" max="64" value="16">
+                    <div class="tamanho-valor"><span id="tamanho-valor">16</span> caracteres</div>
+                </div>
+
                 <div class="parametro-senha">
                     <h4 class="parametro-senha__titulo">Características da senha</h4>
+                    <label><input type="checkbox" id="minusculas" checked> Minúsculas</label>
+                    <label><input type="checkbox" id="maiusculas" checked> Maiúsculas</label>
+                    <label><input type="checkbox" id="numeros" checked> Números</label>
+                    <label><input type="checkbox" id="simbolos"> Símbolos</label>
+                    <div style="margin-top:12px;"><button id="gerar-btn" class="btn">Gerar senha</button></div>
                 </div>
+
                 <div class="parametro-senha">
                     <h4 class="parametro-senha__titulo">Força da senha</h4>
+                    <div id="forca" class="forca">—</div>
                 </div>
             </div>
         </div>
     </section>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
